@@ -61,9 +61,9 @@ class Aplicacao():
             if jogos:
                 for jogo in jogos:
                     print(f"ID: {jogo[0]}, Nome: {jogo[1]}, Ano: {jogo[2]}, Plataformas: {jogo[3]}, Nota: {jogo[4]}, Desenvolvedor: {jogo[5]}")
-                    return True
             else:
                 return False
+            return True
         except Error as e:
             print(f"Erro ao listar jogos: {e}")
 
@@ -103,9 +103,9 @@ class Aplicacao():
             if desenvolvedores:
                 for dev in desenvolvedores:
                     print(f"ID: {dev[0]}, Nome: {dev[1]}")
-                    return True
             else:
                 return False
+            return True
         except Error as e:
             print(f"Erro ao listar desenvolvedores: {e}")
 
