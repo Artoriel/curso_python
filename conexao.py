@@ -137,13 +137,12 @@ class Aplicacao():
                         self.cursor_classe.execute("SELECT * FROM Desenvolvedor")
                         desenvolvedores = self.cursor_classe.fetchall()
                         if desenvolvedores:
-                            if status:
-                                nome = input("Digite o nome do jogo: ")
-                                ano = int(input("Digite o ano de lançamento: "))
-                                plataformas = input("Digite a plataforma que você jogou: ")
-                                self.listar_desenvolvedores()
-                                desenvolvedor_id = int(input("Digite o ID do desenvolvedor: "))
-                                self.adicionar_jogo(nome, ano, plataformas, desenvolvedor_id)
+                            nome = input("Digite o nome do jogo: ")
+                            ano = int(input("Digite o ano de lançamento: "))
+                            plataformas = input("Digite a plataforma que você jogou: ")
+                            self.listar_desenvolvedores()
+                            desenvolvedor_id = int(input("Digite o ID do desenvolvedor: "))
+                            self.adicionar_jogo(nome, ano, plataformas, desenvolvedor_id)
                         else:
                             print('É preciso adicionar pelo menos um desenvolvedor antes de cadastrar um jogo!')
 
@@ -183,10 +182,13 @@ class Aplicacao():
 
                 elif opcao == '6':
                     try:
-                        self.listar_jogos()
-                        jogo_id = int(input("Digite o ID do jogo para adicionar/atualizar a nota: "))
-                        nota = float(input("Digite a nota (0-10): "))
-                        self.adicionar_nota(jogo_id, nota)
+                        status = self.listar_jogos()
+                        if status:
+                            jogo_id = int(input("Digite o ID do jogo para adicionar/atualizar a nota: "))
+                            nota = float(input("Digite a nota (0-10): "))
+                            self.adicionar_nota(jogo_id, nota)
+                        else:
+                            print('Nenhum jogo foi cadastrado para dar/atualizar a nota!')
                     except Exception as e:
                         print(f"Erro ao adicionar nota ao jogo: {e}")
 
